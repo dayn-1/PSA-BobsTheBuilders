@@ -8,8 +8,8 @@ datasource db {
 }
 
 model Berth {
-  id        Int       @id @default(autoincrement())
-  berthId   String    @unique
+  id        Int      @id @default(autoincrement())
+  berthId   String   @unique
   terminal  String
   numCranes Int
   lat       Float
@@ -18,29 +18,29 @@ model Berth {
   width     Int
   draught   Int
   occupied  Boolean
-  nextAvail DateTime  @default(now())
+  nextAvail DateTime @default(now())
 }
 
-
 model Shipment {
-  id            Int     @id @default(autoincrement())
-  shipId        Int     @unique
-  vesselName    String
-  type          String
-  flag          String
-  grossTonnage  Int
-  deadweight    Int
-  length        Int
-  beam          Int
-  draught       Int
-  eta           DateTime
-  etd           DateTime 
-  berth         Int
-  linkedId      Int 
-=======
+  id           Int      @id @default(autoincrement())
+  shipId       Int      @unique
+  vesselName   String
+  type         String
+  flag         String
+  grossTonnage Int
+  deadweight   Int
+  length       Int
+  beam         Int
+  draught      Int
+  eta          DateTime
+  etd          DateTime
+  berth        Int
+  linkedId     Int
+}
+
 model User {
-  id        Int     @id @default(autoincrement())
-  email     String
-  password  String
-  name      String? 
+  id       Int     @id @default(autoincrement())
+  email    String
+  password String
+  name     String?
 }
