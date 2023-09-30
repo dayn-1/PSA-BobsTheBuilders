@@ -7,16 +7,37 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Vessel {
-  id      Int      @id @default(autoincrement())
-  name    String
-  type    String
-  tonnage Int
-  length  Int
-  breadth Int
-  eta     DateTime
+model Berth {
+  id        Int       @id @default(autoincrement())
+  berthId   String    @unique
+  terminal  String
+  numCranes Int
+  lat       Float
+  long      Float
+  length    Int
+  width     Int
+  draught   Int
+  occupied  Boolean
+  nextAvail DateTime  @default(now())
 }
 
+
+model Shipment {
+  id            Int     @id @default(autoincrement())
+  shipId        Int     @unique
+  vesselName    String
+  type          String
+  flag          String
+  grossTonnage  Int
+  deadweight    Int
+  length        Int
+  beam          Int
+  draught       Int
+  eta           DateTime
+  etd           DateTime 
+  berth         Int
+  linkedId      Int 
+=======
 model User {
   id        Int     @id @default(autoincrement())
   email     String
