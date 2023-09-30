@@ -21,6 +21,7 @@ model Berth {
   nextAvail DateTime  @default(now())
 }
 
+
 model Shipment {
   id            Int     @id @default(autoincrement())
   shipId        Int     @unique
@@ -36,4 +37,10 @@ model Shipment {
   etd           DateTime 
   berth         Int
   linkedId      Int 
+=======
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String
+  password  String
+  name      String? 
 }
