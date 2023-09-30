@@ -1,6 +1,4 @@
-export { default } from "next-auth/middleware"
-
-
+export { default } from "next-auth/middleware";
 
 //to change according to the different types of signins that are required
-export const config = { matcher: ["/extra", "/dashboard"]}
+// export const config = { matcher: ["/extra", "/dashboard"]}
