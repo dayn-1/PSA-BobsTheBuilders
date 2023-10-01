@@ -1,6 +1,5 @@
 "use client";
 
-import { PrismaClient } from "@prisma/client";
 import Navbar from "./components/navbar";
 import PriorityModal from "./components/priorityModal";
 import PasirPanjangTerminal from "/public/static/PasirPanjangTerminal.jpeg";
@@ -10,9 +9,6 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { options } from "./api/auth/[...nextauth]/options";
-import { getServerSession } from "next-auth";
-import { prisma } from "@/lib/prisma";
 config.autoAddCss = false;
 
 interface Shipment {
@@ -146,7 +142,13 @@ export default function Home() {
         </h1>
         <div className="grid grid-cols-10 gap-2">
           <div className="relative col-span-7 m-10 h-[660px]">
-            <h1 className="mb-2 font-semibold text-xl">PSA Pasir Panjang </h1>
+          <div className="flex items-center justify-between mb-2">
+  <h1 className="mr-2 font-semibold text-xl">PSA Pasir Panjang</h1>
+  <Link href="berthOverview">
+    <div className="bg-gray-700 text-white px-4">Berth Occupancy Display</div>
+  </Link>
+</div>
+
             <img
               src="/static/PasirPanjangTerminal.jpeg"
               alt="Map"
@@ -222,57 +224,58 @@ export default function Home() {
                 className="text-[#C70039] opacity-90"
               />
             </div>
-            <Link href="/berth" as="/berth/P22">
+            <Link href="/berth" as="/berth/1">
               <div className="h-10 w-10 flex items-center justify-center absolute bottom-[530px] left-[130px] bg-gray-700 text-white">
                 P22
               </div>
             </Link>
-            <Link href="/berth/[id]" as="/berth/P23">
+            <Link href="/berth/[id]" as="/berth/2">
               <div className="h-10 w-10 flex items-center justify-center absolute bottom-[500px] left-[80px] bg-gray-700 text-white">
                 P23
               </div>
             </Link>
-            <Link href="/berth" as="/berth/P24">
+            <Link href="/berth" as="/berth/3">
               <div className="h-10 w-10 flex items-center justify-center absolute bottom-[405px] left-[80px] bg-gray-700 text-white">
                 P24
               </div>
             </Link>
-            <Link href="/berth" as="/berth/P25">
+            <Link href="/berth" as="/berth/4">
               <div className="h-10 w-10 flex items-center justify-center absolute bottom-[315px] left-[80px] bg-gray-700 text-white">
                 P25
               </div>
             </Link>
-            <Link href="/berth" as="/berth/P6">
+            <Link href="/berth" as="/berth/5">
               <div className="h-10 w-10 flex items-center justify-center absolute bottom-[265px] left-[265px] bg-gray-700 text-white">
                 P6
               </div>
             </Link>
-            <Link href="/berth" as="/berth/P7">
+            <Link href="/berth" as="/berth/6">
               <div className="h-10 w-10 flex items-center justify-center absolute bottom-[185px] left-[265px] bg-gray-700 text-white">
                 P7
               </div>
             </Link>
-            <Link href="/berth" as="/berth/P4">
+            <Link href="/berth" as="/berth/7">
               <div className="h-10 w-10 flex items-center justify-center absolute bottom-[110px] left-[370px] bg-gray-700 text-white">
                 P4
               </div>
             </Link>
-            <Link href="/berth" as="/berth/P3">
+            <Link href="/berth" as="/berth/8">
               <div className="h-10 w-10 flex items-center justify-center absolute bottom-[110px] left-[480px] bg-gray-700 text-white">
                 P3
               </div>
             </Link>
-            <Link href="/berth" as="/berth/P2">
+            <Link href="/berth" as="/berth/9">
               <div className="h-10 w-10 flex items-center justify-center absolute bottom-[110px] left-[590px] bg-gray-700 text-white">
                 P2
               </div>
             </Link>
-            <Link href="/berth" as="/berth/P1">
+            <Link href="/berth" as="/berth/10">
               <div className="h-10 w-10 flex items-center justify-center absolute bottom-[110px] left-[700px] bg-gray-700 text-white">
                 P1
               </div>
             </Link>
           </div>
+          
           <div className="col-span-3 border border-black mx-6 rounded-3xl">
             <h1 className="text-center font-semibold text-xl my-8">Events</h1>
             {shipments.length > 0 ? (
@@ -306,6 +309,7 @@ export default function Home() {
         <div>
           <PriorityModal visible={showModal} onClose={handleCloseModal} />
         </div>
+        
       </div>
     </main>
   );
