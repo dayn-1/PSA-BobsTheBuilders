@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { compare } from "bcrypt";
+import { redirect } from "next/navigation";
 import NextAuth, { type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -48,6 +49,7 @@ export const options: NextAuthOptions = {
           name: user.name,
           randomKey: "Hey cool",
         };
+        
       },
     }),
   ],
