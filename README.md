@@ -18,5 +18,9 @@ Our project is the answer to the following problem statement. The proposed solut
 3. By clicking into a berth, PortBros allows users to view an overall berth schedule for various berths through a schedule table
 4. PortBros also allows for a granular view of all activities occuring at each berth and which to priortise along with incoming vessels
 
+## Others
+The application is powered by Artificial Intelligence.
+We used the k-repeated hill-climbing algorithm with randomness factored in to optimise for our chosen heuristic. 
+
 ## Youtube Link
 https://youtu.be/3MnHJZft6yI
