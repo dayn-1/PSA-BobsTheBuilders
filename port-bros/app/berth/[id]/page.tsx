@@ -3,6 +3,11 @@ import { Box, Heading, Text, Flex, Button } from "@chakra-ui/react";
 import { Gantt, ViewMode } from "gantt-task-react";
 import "gantt-task-react/dist/index.css";
 import React from "react";
+import { FC } from "react";
+
+interface pageProps {
+  params: { id: number };
+}
 
 // Define the GanttDataType type to match your data structure
 
@@ -66,23 +71,26 @@ const shipTest = {
 
 tasks.push(shipTest);
 
-const GanttChartPage = () => {
+const GanttChartPage: FC<pageProps> = ({ params }) => {
   return (
-    <Box p={4}>
-      <Flex justifyContent="space-between" alignItems="center">
-        <Heading as="h1" fontSize="3xl">
-          Berth Occupancy Display
-        </Heading>
-        <Button colorScheme="blue">Return</Button>
-      </Flex>
-      <Gantt
-        tasks={tasks}
-        viewMode={ViewMode.QuarterDay}
-        arrowColor="grey"
-        arrowIndent={5}
-        preStepsCount={1}
-      />
-    </Box>
+    <div>
+      <div>Berth {params.id}</div>
+      <Box p={4}>
+        <Flex justifyContent="space-between" alignItems="center">
+          <Heading as="h1" fontSize="3xl">
+            Berth Occupancy Display
+          </Heading>
+          <Button colorScheme="blue">Return</Button>
+        </Flex>
+        <Gantt
+          tasks={tasks}
+          viewMode={ViewMode.QuarterDay}
+          arrowColor="grey"
+          arrowIndent={5}
+          preStepsCount={1}
+        />
+      </Box>
+    </div>
   );
 };
 

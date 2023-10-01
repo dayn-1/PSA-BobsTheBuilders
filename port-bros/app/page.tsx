@@ -70,52 +70,52 @@ export default function Home() {
               />
             </div>
             <Link href="/berth" as="/berth/1">
-              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[530px] left-[130px]">
+              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[530px] left-[130px] bg-gray-700 text-white">
                 1
               </div>
             </Link>
             <Link href="/berth/[id]" as="/berth/2">
-              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[500px] left-[80px]">
+              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[500px] left-[80px] bg-gray-700 text-white">
                 2
               </div>
             </Link>
             <Link href="/berth" as="/berth/3">
-              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[405px] left-[80px]">
+              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[405px] left-[80px] bg-gray-700 text-white">
                 3
               </div>
             </Link>
             <Link href="/berth" as="/berth/4">
-              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[315px] left-[80px]">
+              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[315px] left-[80px] bg-gray-700 text-white">
                 4
               </div>
             </Link>
             <Link href="/berth" as="/berth/5">
-              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[265px] left-[265px]">
+              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[265px] left-[265px] bg-gray-700 text-white">
                 5
               </div>
             </Link>
             <Link href="/berth" as="/berth/6">
-              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[185px] left-[265px]">
+              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[185px] left-[265px] bg-gray-700 text-white">
                 6
               </div>
             </Link>
             <Link href="/berth" as="/berth/7">
-              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[110px] left-[370px]">
+              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[110px] left-[370px] bg-gray-700 text-white">
                 7
               </div>
             </Link>
             <Link href="/berth" as="/berth/8">
-              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[110px] left-[480px]">
+              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[110px] left-[480px] bg-gray-700 text-white">
                 8
               </div>
             </Link>
             <Link href="/berth" as="/berth/9">
-              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[110px] left-[590px]">
+              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[110px] left-[590px] bg-gray-700 text-white">
                 9
               </div>
             </Link>
             <Link href="/berth" as="/berth/10">
-              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[110px] left-[700px]">
+              <div className="h-10 w-10 bg-blue-500 flex items-center justify-center absolute bottom-[110px] left-[700px] bg-gray-700 text-white">
                 10
               </div>
             </Link>
