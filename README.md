@@ -5,4 +5,14 @@ PortBros is an interactive web interface that allocates ships efficiently to PSA
 2. Efficient allocation of manpower to tasks at berths
 3. Concise overview of berth ship allocations and berth activities
 
-4. 
+## Project
+1. Rik Lim
+2. Marcus Lim
+3. Dayn Ang
+4. Ryan Peh
+
+## Project
+Our project is the answer to the following problem statement:
+
+
+Current berth allocation is unsustainable as 
