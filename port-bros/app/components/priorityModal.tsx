@@ -31,7 +31,7 @@ export default function PriorityModal({ visible, onClose }: priorityProps) {
       <div
         id="outside"
         className="fixed inset-0 bg-black bg-opacity-25 flex justify-center items-center cursor-pointer"
-        onClick={() => onClose()}
+        // onClick={() => onClose()}
         style={{ zIndex: 999 }}
       >
         <div className="sm:m-80 border-8 mx-8 rounded-3xl bg-gray-300/80 cursor-default h-[700px] sm:w-full">
@@ -72,7 +72,10 @@ export default function PriorityModal({ visible, onClose }: priorityProps) {
               </div>
             </div>
           </div>
-          <div className="cursor-pointer flex justify-center items-center bg-green-700 text-white mx-80 text-2xl rounded-3xl h-10 hover:bg-green-500">
+          <div
+            className="cursor-pointer flex justify-center items-center bg-green-700 text-white mx-80 text-2xl rounded-3xl h-10 hover:bg-green-500"
+            onClick={() => onClose()}
+          >
             Confirm
           </div>
         </div>
