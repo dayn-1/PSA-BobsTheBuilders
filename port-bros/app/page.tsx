@@ -10,6 +10,9 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { options } from "./api/auth/[...nextauth]/options";
+import { getServerSession } from "next-auth";
+import { prisma } from "@/lib/prisma";
 config.autoAddCss = false;
 
 interface Shipment {
@@ -57,6 +60,7 @@ function getBerthName(berthNo: number | undefined): string {
 }
 
 export default function Home() {
+  const session = await getServerSession(options);
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [loading, setLoading] = useState(true);
 
