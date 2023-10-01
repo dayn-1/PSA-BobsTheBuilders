@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 interface Berth {
   id: number;
@@ -36,9 +37,15 @@ type Solution = {
   berths: Berth[];
 };
 
-export default async function allocationAlgo() {
-  const prisma = new PrismaClient();
+const prisma = new PrismaClient();
 
+async function allocationAlgo(
+  trans: number,
+  waiting: number,
+  util: number,
+  turnaround: number,
+  changeover: number
+) {
   const shipments = await prisma.shipment.findMany();
   // console.log(shipments);
   const berths = await prisma.berth.findMany();
@@ -218,10 +225,10 @@ export default async function allocationAlgo() {
     if (!validateAllocation(shipments, berths)) return 0;
 
     const weights = {
-      waitingTimeWeight: 1,
-      craneEfficiencyWeight: 1,
-      transshipmentWeight: 1,
-      occupancyTimeWeight: 1,
+      waitingTimeWeight: waiting,
+      craneEfficiencyWeight: turnaround,
+      transshipmentWeight: trans,
+      occupancyTimeWeight: util,
     };
     const waitingTime = calculateWaitingTime(shipments, berths);
     const craneEfficiency = calculateCraneEfficiency(shipments, berths);
@@ -303,7 +310,6 @@ export default async function allocationAlgo() {
 
     return { shipments: updatedShipments, berths: updatedBerths };
   }
- 
 
   // allPermutations now contains all possible outcomes with 1-to-1 swaps
 
@@ -456,4 +462,48 @@ export default async function allocationAlgo() {
   updateDatabaseWithSolution(optimizedSolution);
 
   return optimizedSolution;
+}
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Solution | { message: string }>
+) {
+  if (req.method !== "GET") {
+    return res.status(405).json({ message: "Method not allowed" });
+  }
+
+  try {
+    // Extract the integer inputs from query parameters
+    const trans = parseInt(req.query.trans as string, 10);
+    const waiting = parseInt(req.query.waiting as string, 10);
+    const util = parseInt(req.query.util as string, 10);
+    const turnaround = parseInt(req.query.turnaround as string, 10);
+    const changeover = parseInt(req.query.changeover as string, 10);
+
+    if (
+      isNaN(trans) ||
+      isNaN(waiting) ||
+      isNaN(util) ||
+      isNaN(turnaround) ||
+      isNaN(changeover)
+    ) {
+      return res.status(400).json({ message: "Invalid input values" });
+    }
+
+    // Call your allocationAlgo function with the parsed integer inputs
+    const optimizedSolution = await allocationAlgo(
+      trans,
+      waiting,
+      util,
+      turnaround,
+      changeover
+    );
+
+    // Return the optimized solution in the API response
+    res.status(200).json(optimizedSolution);
+  } catch (error) {
+    console.error("Error in API handler:", error);
+    res.status(500).json({ message: "Internal server error" });
+  } finally {
+    await prisma.$disconnect();
+  }
 }

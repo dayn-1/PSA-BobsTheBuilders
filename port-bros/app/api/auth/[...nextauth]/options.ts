@@ -1,40 +1,54 @@
-import type { NextAuthOptions } from "next-auth";
-import GitHubProvider from "next-auth/providers/github";
+import { prisma } from "@/lib/prisma";
+import { compare } from "bcrypt";
+import NextAuth, { type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const options: NextAuthOptions = {
+  session: {
+    strategy: "jwt",
+  },
   providers: [
-    GitHubProvider({
-      clientId: process.env.GITHUHB_ID as string,
-      clientSecret: process.env.GITHUB_SECRET as string,
-    }),
     CredentialsProvider({
-      name: "Credentials",
+      name: "Sign in",
       credentials: {
-        username: {
-          label: "Username:",
-          type: "text",
-          placeholder: "Enter username",
+        email: {
+          label: "Email",
+          type: "email",
+          placeholder: "hello@example.com",
         },
-        password: {
-          label: "Password:",
-          type: "password",
-        },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // get user from database next-auth.js.org/configuration/providers/credentials
-        const user = { id: "52", name: "Bob", password: "123456789" };
-
-        if (
-          credentials?.username === user.name &&
-          credentials?.password === user.password
-        ) {
-          return user;
-        } else {
+        if (!credentials?.email || !credentials.password) {
           return null;
         }
+
+        const user = await prisma.user.findUnique({
+          where: {
+            email: credentials.email,
+          },
+        });
+
+        if (!user) {
+          return null;
+        }
+
+        const isPasswordValid = await compare(
+          credentials.password,
+          user.password
+        );
+
+        if (!isPasswordValid) {
+          return null;
+        }
+
+        return {
+          id: user.id + "",
+          email: user.email,
+          name: user.name,
+          randomKey: "Hey cool",
+        };
       },
     }),
   ],
-  secret: "LRI2oHZshBfJq6UhO1fT+5i7fjuoUzN5gwSZ/B+kcYM=",
 };
