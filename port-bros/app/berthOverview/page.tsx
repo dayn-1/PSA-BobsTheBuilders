@@ -6,6 +6,7 @@ import moment from 'moment'
 import { Box, Heading, Text, Flex, Button } from "@chakra-ui/react";
 import "gantt-task-react/dist/index.css";
 import React from "react";
+import Link from 'next/link';
 
 const groups = [
 	{ id: 1, title: 'berth 1' },
@@ -73,7 +74,9 @@ const TimeLine = () => {
 		<Box p={4}>
 		  <Flex justifyContent="space-between" alignItems="center">
       <h1 className="font-semibold text-2xl mb-2">Berth Occupany Display</h1>
-			<Button colorScheme="blue">Return</Button>
+			<Link href="/">
+    <div className="bg-gray-700 text-white px-4">Return</div>
+  </Link>
 		  </Flex>
 		  <Timeline
       groups={groups}
