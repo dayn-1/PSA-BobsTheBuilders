@@ -133,6 +133,10 @@ export default function Home() {
             <FontAwesomeIcon icon={faGear} size="xl" />
           </div>
         </div>
+        <h2 className="justify-end flex mr-24 ">
+          {" "}
+          Time Now: {formatDate(new Date("2023-09-30T20:35:00.000Z"))}{" "}
+        </h2>
         <h1 className="justify-center flex underline-offset-4 underline text-xl mb-8">
           {" "}
           Port Dashboard{" "}
