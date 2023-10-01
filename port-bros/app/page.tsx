@@ -60,7 +60,6 @@ function getBerthName(berthNo: number | undefined): string {
 }
 
 export default function Home() {
-  const session = await getServerSession(options);
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [loading, setLoading] = useState(true);
 

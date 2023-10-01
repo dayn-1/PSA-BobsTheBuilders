@@ -1,3 +1,5 @@
+import {signOut} from 'next-auth/react' 
+
 export default function Navbar() {
   return (
     <main>
@@ -9,8 +11,7 @@ export default function Navbar() {
           Home
         </div>
         <div className="mx-8 font-poppins cursor-pointer hover:text-blue-300">
-          {" "}
-          Sign Out
+          <button onClick={()=> signOut()}>Sign Out</button>
         </div>
       </div>
     </main>
