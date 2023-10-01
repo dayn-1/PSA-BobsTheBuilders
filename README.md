@@ -15,13 +15,8 @@ PortBros is an interactive web interface that allocates ships efficiently to PSA
 Our project is the answer to the following problem statement. The proposed solution involves the following steps:
 1. A supervisor can first log into the website using his authenticated ID
 2. A user can then optimise berth allocation to ships based on a weight combination of several KPIs
-3. PortBros allows a use to view then overall berth sched
-
-Current berth allocation is unsustainable as 
-
-
-## How to Use
-PortBros is deisgned to optimise the current allocation of 
+3. By clicking into a berth, PortBros allows users to view an overall berth schedule for various berths through a schedule table
+4. PortBros also allows for a granular view of all activities occuring at each berth and which to priortise along with incoming vessels
 
 ## Youtube Link
 https://youtu.be/QP5zO0Mjllo
