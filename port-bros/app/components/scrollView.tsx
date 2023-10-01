@@ -10,7 +10,7 @@ const ScrollView: React.FC<ScrollViewProps> = ({ children, style }) => {
     <div
       style={{
         overflowY: 'scroll',
-        maxHeight: '400px', // Adjust the height as needed
+        maxHeight: '100vh', // Set the height to the viewport height
         ...style,
       }}
     >

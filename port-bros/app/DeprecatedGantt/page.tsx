@@ -3,6 +3,8 @@ import { Box, Heading, Text, Flex, Button } from "@chakra-ui/react";
 import { Gantt, ViewMode } from "gantt-task-react";
 import "gantt-task-react/dist/index.css";
 import React from "react";
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
+
 
 // Define the GanttDataType type to match your data structure
 
@@ -59,10 +61,34 @@ const shipTest = {
     type: 'task',
     progress: 45,
     isDisabled: true,
+	dependencies: [`Ship-1`],
     styles: { progressColor: '#ffbb54', progressSelectedColor: '#ff9e0d' },
   }
 
 tasks.push(shipTest);
+
+let totalTimeInSeconds: bigint = BigInt(0);
+const dateArb = new Date(2023, 1, 2, 8, 0);
+const aWeek = new Date(dateArb);
+aWeek.setDate(dateArb.getDate() + 7);
+
+// Calculate the time difference in seconds
+const timeDiffTotal = aWeek.getTime() - dateArb.getTime();
+const timeTotal = BigInt(Math.floor(timeDiffTotal / 1000));
+
+console.log(`The number of seconds from ${dateArb} to one week later is: ${timeTotal} seconds`);
+
+for (let i = 0; i < tasks.length; i++) {
+  if (tasks[i].start < aWeek) {
+    const timeDifferenceMilliseconds = tasks[i].end.getTime() - tasks[i].start.getTime();
+    const timeDifferenceInSeconds = timeDifferenceMilliseconds / 1000; // Convert milliseconds to seconds
+    const timeDifferenceBigInt = BigInt(Math.floor(timeDifferenceInSeconds)); // Convert to BigInt
+    totalTimeInSeconds += timeDifferenceBigInt;
+  }
+}
+
+const percentage = Number((totalTimeInSeconds) / (timeTotal));
+
 
 const GanttChartPage = () => {
 	return (
@@ -80,6 +106,15 @@ const GanttChartPage = () => {
 			arrowIndent={5}
 			preStepsCount={1}
 		  />
+    <Flex align="center" justify="center">
+      <CircularProgress
+        value={75}
+        size="120px" // Adjust the size as needed
+        thickness="12px" // Adjust the thickness as needed
+      >
+        <Text fontSize="24px">{75}%</Text>
+      </CircularProgress>
+    </Flex>
 		</Box>
 	  );
 	}

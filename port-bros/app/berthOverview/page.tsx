@@ -4,7 +4,6 @@ import Timeline from 'react-calendar-timeline';
 import 'react-calendar-timeline/lib/Timeline.css'
 import moment from 'moment'
 import { Box, Heading, Text, Flex, Button } from "@chakra-ui/react";
-import { Gantt, ViewMode } from "gantt-task-react";
 import "gantt-task-react/dist/index.css";
 import React from "react";
 
@@ -73,9 +72,7 @@ const TimeLine = () => {
 	return (
 		<Box p={4}>
 		  <Flex justifyContent="space-between" alignItems="center">
-			<Heading as="h1" fontSize="3xl">
-			  Berth Occupancy Display
-			</Heading>
+      <h1 className="font-semibold text-2xl mb-2">Berth Occupany Display</h1>
 			<Button colorScheme="blue">Return</Button>
 		  </Flex>
 		  <Timeline
