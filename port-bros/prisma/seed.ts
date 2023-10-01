@@ -36,6 +36,7 @@ async function main() {
       password: jonPassword,
     },
   });
+
 }
 
 main()

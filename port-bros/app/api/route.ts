@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-import { options } from "./auth/[...nextauth]/options";
+import { options } from "./auth/[...nextauth]/route";
 import exp from "constants";
 
 export async function GET(request: Request) {

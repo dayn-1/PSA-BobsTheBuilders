@@ -10,7 +10,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { options } from "../api/auth/[...nextauth]/options";
+import { options } from "../api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { prisma } from "@/lib/prisma";
 config.autoAddCss = false;

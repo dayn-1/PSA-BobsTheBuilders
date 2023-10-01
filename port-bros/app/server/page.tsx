@@ -1,4 +1,4 @@
-import { options } from '../api/auth/[...nextauth]/options'
+import { options } from '../api/auth/[...nextauth]/route'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 
